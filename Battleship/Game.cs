@@ -94,6 +94,9 @@
             return true;
         }
 
+        // iterate over the guesses in final method and check with HitOrMiss function to see if it is a boat or not
+        // if it is a boat, denote with -1
+
         public static int Play(String[] ships, String[] guesses)
         {
             SetUpGame(ships);
@@ -105,20 +108,12 @@
                     String[] guessCoordinates = guesses[i].Split(':');
                     int x = int.Parse(guessCoordinates[0]);
                     int y = int.Parse(guessCoordinates[1]);
-
                     int idTracker = gameBoard[x, y];
                     gameBoard[x, y] = -1;
                     if (IsSunk(idTracker))
                     {
                         boatsSunk++;
                     }
-                }
-                else
-                {
-                    String[] guessCoordinates = guesses[i].Split(':');
-                    int x = int.Parse(guessCoordinates[0]);
-                    int y = int.Parse(guessCoordinates[1]);
-                    gameBoard[x, y] = -2;
                 }
             }
             return boatsSunk;
